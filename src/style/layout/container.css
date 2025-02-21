@@ -1,0 +1,99 @@
+/* 导入基础尺寸样式文件 */
+@import "../base/sizes.css";
+
+/* 通用容器样式 */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+/* 容器变体样式 */
+.container-fluid {
+    /* 流体容器，最大宽度为 100%，占满整个父容器 */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+.container-narrow {
+    /* 窄容器，最大宽度为 800px */
+    max-width: 78%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+.container-wide {
+    /* 宽容器，最大宽度为 1600px */
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 var(--spacing-xl);
+}
+
+
+/* 内容包装器样式 */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* 使用 CSS 变量设置元素之间的间距，可根据不同屏幕尺寸动态调整 */
+    gap: var(--spacing-xl);
+}
+
+/* 内容头部样式 */
+.content-header {
+    text-align: center;
+    /* 使用 CSS 变量设置最大宽度，可根据不同屏幕尺寸动态调整 */
+    max-width: 70%;
+    margin: 0 auto;
+
+}
+
+/* 内容主体样式 */
+.content-body {
+    position: relative;
+}
+
+/* 两列布局样式 */
+.two-columns {
+    display: grid;
+    /* 两列布局，每列宽度相等 */
+    grid-template-columns: 1fr 1fr;
+    /* 使用 CSS 变量设置列之间的间距，可根据不同屏幕尺寸动态调整 */
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+/* 响应式设计部分 */
+/* 小屏幕设备（例如手机）样式调整 */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+    }
+
+    .two-columns {
+        /* 小屏幕下，两列布局变为单列布局 */
+        grid-template-columns: 1fr;
+        /* 小屏幕下，列之间的间距使用较小的变量，可根据不同屏幕尺寸动态调整 */
+        gap: var(--spacing-lg);
+    }
+}
+
+/* 中等屏幕设备（例如平板）样式调整 */
+@media (max-width: 992px) {
+    .container {
+        /* 中等屏幕下，容器最大宽度使用另一个变量，可根据不同屏幕尺寸动态调整 */
+        width: 90%;
+        padding: 0 var(--spacing-md);
+    }
+
+    .content-header {
+        /* 中等屏幕下，内容头部最大宽度使用另一个变量，可根据不同屏幕尺寸动态调整 */
+        max-width: var(--container-max-width-3);
+    }
+
+    .two-columns {
+        gap: var(--spacing-md);
+    }
+}
