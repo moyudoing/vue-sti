@@ -15,8 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import { useNavStore } from '@/stores/navStore';
-
+import { useNavStore } from '@/stores/navStore.ts';
+import { ElMenuItem } from 'element-plus';
 const navStore = useNavStore();
 const { isMobile, activeRoute, routes, navigateTo } = navStore;
 </script>

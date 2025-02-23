@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import NavMenu from './NavMenu/index.vue'
-import SideNav from "@/layout/SideNav.vue";
-import Footer from "@/layout/Footer.vue";
+import SideNav from "@/layout/home/SideNav.vue";
+import Footer from "@/layout/home/Footer.vue";
 </script>
 
 <template>
   <NavMenu class="nav-menu" />
   <div class="main-content">
+    <Header/>
+
     <!-- 通过绑定路由的 fullPath 作为 key，确保每次路由变化时组件重新渲染 -->
     <router-view :key="$route.fullPath" />
   </div>

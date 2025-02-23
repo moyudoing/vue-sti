@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { useNavStore } from '@/stores/navStore';
+import { useNavStore } from '@/stores/navStore.ts';
 
 const navStore = useNavStore();
 const { isMobile, isMobileMenuOpen, activeRoute, routes, navigateTo, toggleMobileMenu } = navStore;

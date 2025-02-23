@@ -7,7 +7,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-info">
-          <img alt="菊芋营养粉" class="footer-logo" src="@/assets/favicon.ico">
+          <img alt="菊芋营养粉" class="footer-logo" src="../../assets/favicon.ico">
           <p>专注于健康食品研发</p>
         </div>
         <div class="footer-links">

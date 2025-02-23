@@ -3,9 +3,7 @@
 </script>
 
 <template>
-<div class="app">
-  <router-view/>
-</div>
+<h1>FS</h1>
 </template>
 
 <style scoped>
