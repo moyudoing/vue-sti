@@ -3,48 +3,45 @@
     <!-- 添加过渡效果 -->
     <transition-group name="menu-item-transition" tag="div">
       <!-- 遍历菜单路由列表，渲染菜单项 -->
-      <template v-for="route in menuRoutes" :key="route.path">
-        <router-link
-            :to="route.path"
-            class="menu-item"
-            :class="{ active: isActiveRoute(route.path) }"
-        >
-          <!-- 显示图标 -->
-          <i :class="['fa', `fa-${route.meta?.icon}`]" class="icon"></i>
-          <!-- 显示标题 -->
-          <span class="title">{{ route.meta?.title }}</span>
-        </router-link>
-      </template>
+      <router-link
+          v-for="route in menuRoutes"
+          :key="route.path"
+          :to="route.path"
+          class="menu-item"
+          :class="{ active: isActiveRoute(route.path) }"
+      >
+        <!-- 显示图标 -->
+        <i :class="['fa', `fa-${route.meta?.icon}`]" class="icon"></i>
+        <!-- 显示标题 -->
+        <span class="title">{{ route.meta?.title }}</span>
+      </router-link>
     </transition-group>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type RouteRecordRaw, useRouter, useRoute } from 'vue-router';
+import { type RouteRecordRaw, useRoute } from 'vue-router';
+import selectRoute from '@/router/modules/select.ts';
 import { computed } from 'vue';
 
-// 获取路由实例
-const router = useRouter();
+// 遍历子路由并打印信息
+if (selectRoute.children) {
+  selectRoute.children.forEach((route: any) => {
+    console.log(`Route name: ${route.name}, Path: ${route.path}`);
+  });
+}
+
 // 获取当前路由信息
 const route = useRoute();
 
 // 计算可用于菜单显示的路由列表，仅保留 select 下的子路由
 const menuRoutes = computed<RouteRecordRaw[]>(() => {
-  try {
-    // 找到 select 路由
-    const selectRoute = router.options.routes.find(r => r.path === '/select');
-    if (!selectRoute ||!selectRoute.children) {
-      return [];
-    }
-    // 处理子路由，拼接完整路径
-    return selectRoute.children.map((childRoute) => ({
-      ...childRoute,
-      path: `${selectRoute.path}/${childRoute.path}`
-    }));
-  } catch (error) {
-    console.error('Error generating menu routes:', error);
-    return [];
-  }
+  const children = selectRoute.children;
+  if (!children) return [];
+  return children.map((childRoute) => ({
+    ...childRoute,
+    path: `${selectRoute.path}/${childRoute.path}`
+  }));
 });
 
 // 判断当前路由是否激活

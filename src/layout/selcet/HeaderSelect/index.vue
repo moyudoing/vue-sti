@@ -18,7 +18,6 @@
 
       <div class="mobile-menu">
         <button @click="toggleMenu">
-          <MenuIcon />
         </button>
       </div>
     </nav>

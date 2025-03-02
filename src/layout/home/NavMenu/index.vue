@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useNavStore } from '@/stores/navStore.ts';
+import { useNavStore } from '@/stores/modules/navStore.ts';
 import Computer from './Computer.vue';
 import MobileTerminal from './MobileTerminal.vue';
 

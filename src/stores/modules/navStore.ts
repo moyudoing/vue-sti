@@ -2,10 +2,15 @@ import { defineStore } from 'pinia';
 import { ref } from 'vue';
 import router from '@/router';
 
-export const useNavStore = defineStore('nav', () => {
+export const useNavStore
+    = defineStore('nav', () => {
+
     const isMobile = ref(false);
+
     const isMobileMenuOpen = ref(false);
+
     const activeRoute = ref('');
+
     const routes = router.getRoutes().filter(route => route.meta && route.meta.title);
 
     const checkScreenSize = () => {

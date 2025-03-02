@@ -12,4 +12,13 @@ import HeroSection from '@/components/Home/HeroSection.vue'
 import ProductShowcase from '@/components/Home/ProductShowcase.vue'
 import FeatureSection from '@/components/Home/FeatureSection.vue'
 import NewsSection from '@/components/Home/NewsSection.vue'
+
 </script>
+
+<style scoped>
+.home-page{
+  display: grid;
+}
+
+
+</style>
