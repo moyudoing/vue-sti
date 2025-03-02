@@ -49,7 +49,7 @@ export const routes: RouteRecordRaw[] = [
 // 创建路由实例
 const mainRouter = createRouter({
     // 使用哈希路由模式，并设置基础路径
-    history: createWebHashHistory('/jy_yyf/'),
+    history: createWebHashHistory('/vue-sti/'),
     routes
 });
 
