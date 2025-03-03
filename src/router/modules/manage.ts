@@ -1,30 +1,15 @@
 // @/router/modules/manage.ts
 import type { RouteRecordRaw } from "vue-router";
 
-// 定义布局组件
 const SelectLayout = () => import('@/layout/selcet/index.vue').catch(error => {
     console.error('Failed to load select layout component:', error);
     return () => ({ template: '<div>Failed to load layout</div>' });
 });
 
-// 定义子路由组件
-const HomeSelectView = () => import('@/views/select/modules/HomeSelectView.vue').catch(error => {
-    console.error('Failed to load home select view component:', error);
-    return () => ({ template: '<div>Failed to load home view</div>' });
-});
-const ColorSelectView = () => import('@/views/select/modules/ColorSelectView.vue').catch(error => {
-    console.error('Failed to load color select view component:', error);
-    return () => ({ template: '<div>Failed to load color view</div>' });
-});
-const CompleteSelectionView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
-    console.error('Failed to load color select view component:', error);
-    return () => ({ template: '<div>Failed to load color view</div>' });
-});
-
 const routes: RouteRecordRaw = {
-    path: '/select',
+    path: '/manage',
     name: 'selectView',
-    redirect: '/select/home',
+    redirect: '/manage/home',
     component: SelectLayout,
     meta: {
         title: "管理订单",
@@ -35,28 +20,10 @@ const routes: RouteRecordRaw = {
         {
             path: 'home',
             name: 'selectHomeView',
-            component: HomeSelectView,
+            component: ()=>import('@/views/manage/index.vue'),
             meta: {
                 title: "首页",
                 icon: "home"
-            }
-        },
-        {
-            path: 'color',
-            name: 'colorView',
-            component: ColorSelectView,
-            meta: {
-                title: "选择颜色",
-                icon: "color"
-            }
-        },
-        {
-            path: 'completeSelection',
-            name: 'completeSelectionView',
-            component: CompleteSelectionView,
-            meta: {
-                title: "完成选择",
-                icon: "completeSelection"
             }
         },
 

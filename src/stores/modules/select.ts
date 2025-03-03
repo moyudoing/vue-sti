@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 
 // 定义表单数据的类型
-interface FormData {
+export interface FormData {
     selectedColor: string;
     largeBallCount: number;
     smallBallCount: number;
