@@ -93,6 +93,9 @@ body {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between; /* 新增：使子元素左右两端对齐 */
+    align-items: center; /* 新增：垂直居中对齐 */
   }
 
   /* 主要内容区域样式 */

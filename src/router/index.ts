@@ -21,11 +21,12 @@ export const routes: RouteRecordRaw[] = [
         // 根路径重定向到首页
         path: '/',
         redirect: '/home',
+        name: 'home11',
         component: HomeLayout,
         children: [
             {
                 path: 'home',
-                name: 'homeView',
+                name: 'home',
                 component: HomeView,
                 meta: {
                     title: '首页',
