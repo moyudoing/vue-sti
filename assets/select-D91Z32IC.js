@@ -1,0 +1,1 @@
+import{d as e}from"./index-CrNqDM1D.js";const a=e("selectStore",{state:()=>({formData:{selectedColor:"",largeBallCount:0,smallBallCount:0,selectedPosition:""}}),actions:{updateFormData(t){this.formData=t}}});export{a as u};
