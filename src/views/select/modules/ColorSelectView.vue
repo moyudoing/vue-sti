@@ -56,7 +56,6 @@ import { useSelectStore } from '@/stores/modules/select';
 // 获取 formStore 实例
 const selectStore = useSelectStore();
 const { formData } = toRefs(selectStore); // 使用 toRefs 确保响应式
-
 // 表单引用
 const formRef = ref<FormInstance>();
 
@@ -118,12 +117,13 @@ const submitForm = () => {
     }
   });
 };
+
 </script>
 
 <style lang="scss" scoped>
 .color-block {
-  width: 80px;
-  height: 80px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
   margin-right: 8px;
   border: 1px solid #ccc;
