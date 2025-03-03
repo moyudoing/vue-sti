@@ -5,9 +5,10 @@ import Footer from "@/layout/home/Footer.vue";
 </script>
 
 <template>
-  <NavMenu class="nav-menu" />
   <div class="main-content">
-    <Header/>
+    <header class="header">
+      <NavMenu class="nav-menu" />
+    </header>
 
     <!-- 通过绑定路由的 fullPath 作为 key，确保每次路由变化时组件重新渲染 -->
     <router-view :key="$route.fullPath" />
@@ -25,9 +26,15 @@ body {
   min-height: 100vh;
 }
 
+.header{
+  display: flex;
+}
+
 /* 主要内容区域样式 */
 .main-content {
   flex: 1;
   padding-top: 60px; /* 空出导航栏的空间 */
 }
+
+
 </style>

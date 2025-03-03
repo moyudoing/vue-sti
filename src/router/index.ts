@@ -1,6 +1,7 @@
 // @/router/index.ts
 import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-router';
 import SelectRoute from "./modules/select.ts";
+import ManageRoute from "./modules/manage.ts";
 import LoginView from "@/views/login/LoginView.vue";
 
 // 定义主路由布局组件
@@ -44,7 +45,8 @@ export const routes: RouteRecordRaw[] = [
             isShow: true,
         },
     },
-    SelectRoute
+    SelectRoute,
+    ManageRoute,
 ];
 
 // 创建路由实例
