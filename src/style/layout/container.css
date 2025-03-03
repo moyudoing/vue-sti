@@ -30,15 +30,6 @@
     padding: 0 var(--spacing-xl);
 }
 
-
-/* 内容包装器样式 */
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    /* 使用 CSS 变量设置元素之间的间距，可根据不同屏幕尺寸动态调整 */
-    gap: var(--spacing-xl);
-}
-
 /* 内容头部样式 */
 .content-header {
     text-align: center;

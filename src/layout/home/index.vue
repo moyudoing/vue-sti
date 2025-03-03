@@ -10,7 +10,6 @@ import Footer from "@/layout/home/Footer.vue";
       <NavMenu class="nav-menu" />
     </header>
 
-    <!-- 通过绑定路由的 fullPath 作为 key，确保每次路由变化时组件重新渲染 -->
     <router-view :key="$route.fullPath" />
   </div>
   <Footer class="footer"/>

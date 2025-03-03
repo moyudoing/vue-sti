@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout">
+  <div class="select-layout">
     <!-- 侧边栏 -->
     <aside class="sidebar">
       <!-- 侧边栏顶部 logo 区域 -->
@@ -13,24 +13,15 @@
     </aside>
 
     <!-- 内容区域 -->
-    <div class="content-area">
+    <div class="content-wrapper">
       <!-- 头部面包屑导航 -->
       <header class="header">
-        <breadcrumb />
-        <div class="backHome">
-          <BackHome/>
-        </div>
+        <breadcrumb class="left-content"/>
+        <BackHome class="right-content"/>
       </header>
-
-      <!-- 主要内容区域 -->
-      <main class="main-content">
-        <!-- 路由视图，添加过渡动画 -->
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
-      </main>
+      <div class="main-content">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -42,68 +33,105 @@ import BackHome from './BackHome/index.vue'
 </script>
 
 <style lang="scss" scoped>
-/* 全局字体设置 */
+$sidebar-width: 240px;
+$bg-color: #f9fafb;
+$header-bg-color: white;
+$shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$border-radius: 8px;
+
+/* 全局样式 */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: $bg-color;
+  display: flex;
+  min-height: 100vh;
+}
+
+.select-layout {
+  width: 100%;
 }
 
 .main-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: $sidebar-width 1fr;
   min-height: 100vh;
+  width: 100%;
+}
 
-  /* 侧边栏样式 */
-  .sidebar {
-    background: linear-gradient(180deg, #2c3e50 0%, #1a252f 100%);
-    color: white;
-    padding: 20px;
-    position: fixed;
-    width: 240px;
-    height: 100vh;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease;
+/* 侧边栏样式 */
+.sidebar {
+  background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+  color: white;
+  padding: 20px;
+  position: fixed;
+  width: $sidebar-width;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
 
-    /* logo 区域样式 */
-    .logo-area {
-      text-align: center;
-      margin-bottom: 30px;
+  /* logo 区域样式 */
+  .logo-area {
+    text-align: center;
+    margin-bottom: 30px;
 
-      h1 {
-        font-size: 24px;
-        letter-spacing: 1px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      }
+    h1 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: #ecf0f1;
     }
   }
+}
 
-  /* 内容区域样式 */
-  .content-area {
-    margin-left: 240px;
-    padding: 20px;
-    background-color: #f4f7fa;
-    transition: margin-left 0.3s ease;
+/* 内容包装器样式 */
+.content-wrapper {
+  margin-left: $sidebar-width;
+  transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - $sidebar-width); // 计算内容区域宽度
+  height: 100vh;
+}
+
+/* 头部样式 */
+.header {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: $header-bg-color;
+  box-shadow: $shadow-light;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  position: fixed; // 固定头部
+  top: 0;
+  left: $sidebar-width;
+  right: 0;
+  z-index: 1; // 确保头部在最上层
+
+  .left-content {
+    justify-self: start;
   }
 
-  /* 头部样式 */
-  .header {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between; /* 新增：使子元素左右两端对齐 */
-    align-items: center; /* 新增：垂直居中对齐 */
+  .right-content {
+    justify-self: end;
   }
+}
 
-  /* 主要内容区域样式 */
-  .main-content {
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+/* 主要内容区域样式 */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: $header-bg-color;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  transition: all 0.3s ease;
+  margin-top: 120px;
+
+  &:hover {
+    box-shadow: $shadow-hover;
   }
 }
 
@@ -127,8 +155,13 @@ body {
       display: none;
     }
 
-    .content-area {
+    .content-wrapper {
       margin-left: 0;
+      width: 100%;
+    }
+
+    .header {
+      left: 0;
     }
   }
 }

@@ -16,22 +16,6 @@ const ColorSelectView = () => import('@/views/select/modules/ColorSelectView.vue
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
 });
-const ShapeSelectView = () => import('@/views/select/modules/ShapeSelectView.vue').catch(error => {
-    console.error('Failed to load color select view component:', error);
-    return () => ({ template: '<div>Failed to load color view</div>' });
-});
-const LocationSelectView = () => import('@/views/select/modules/LocationSelectView.vue').catch(error => {
-    console.error('Failed to load home select view component:', error);
-    return () => ({ template: '<div>Failed to load home view</div>' });
-});
-const LargeBallsSelectView = () => import('@/views/select/modules/LargeBallsSelectView.vue').catch(error => {
-    console.error('Failed to load color select view component:', error);
-    return () => ({ template: '<div>Failed to load color view</div>' });
-});
-const SmallBallsSelectView = () => import('@/views/select/modules/SmallBallsSelectView.vue').catch(error => {
-    console.error('Failed to load color select view component:', error);
-    return () => ({ template: '<div>Failed to load color view</div>' });
-});
 const CompleteSelectionView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
@@ -62,44 +46,8 @@ const routes: RouteRecordRaw = {
             name: 'colorView',
             component: ColorSelectView,
             meta: {
-                title: "选择颜色",
+                title: "选择",
                 icon: "color"
-            }
-        },
-        {
-            path: 'location',
-            name: 'locationView',
-            component: LocationSelectView,
-            meta: {
-                title: "选择仓位",
-                icon: "location"
-            }
-        },
-        {
-            path: 'largeBalls',
-            name: 'largeBallsView',
-            component: LargeBallsSelectView,
-            meta: {
-                title: "选择大球数量",
-                icon: "largeBalls"
-            }
-        },
-        {
-            path: 'smallBalls',
-            name: 'smallBallsView',
-            component: SmallBallsSelectView,
-            meta: {
-                title: "选择小球数量",
-                icon: "smallBalls"
-            }
-        },
-        {
-            path: 'shape',
-            name: 'shapeView',
-            component: ShapeSelectView,
-            meta: {
-                title: "选择形状",
-                icon: "shape"
             }
         },
         {

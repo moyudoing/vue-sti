@@ -16,19 +16,19 @@ const ColorSelectView = () => import('@/views/select/modules/ColorSelectView.vue
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
 });
-const ShapeSelectView = () => import('@/views/select/modules/ShapeSelectView.vue').catch(error => {
+const ShapeSelectView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
 });
-const LocationSelectView = () => import('@/views/select/modules/LocationSelectView.vue').catch(error => {
+const LocationSelectView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
     console.error('Failed to load home select view component:', error);
     return () => ({ template: '<div>Failed to load home view</div>' });
 });
-const LargeBallsSelectView = () => import('@/views/select/modules/LargeBallsSelectView.vue').catch(error => {
+const LargeBallsSelectView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
 });
-const SmallBallsSelectView = () => import('@/views/select/modules/SmallBallsSelectView.vue').catch(error => {
+const SmallBallsSelectView = () => import('@/views/select/CompleteSelectionView.vue').catch(error => {
     console.error('Failed to load color select view component:', error);
     return () => ({ template: '<div>Failed to load color view</div>' });
 });

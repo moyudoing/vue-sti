@@ -31,7 +31,3 @@ body {
     color: var(--text-color);
 }
 
-.header {
-    background-color: var(--default-primary-color);
-    color: var(--text-color-inverse);
-}
